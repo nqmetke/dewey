@@ -1,0 +1,64 @@
+
+.container{
+    width:100%;
+    display: flex;
+    border-radius: 100px;  
+    flex-direction: row;
+    flex-wrap: nowrap;
+    border: solid 10px rgb(96, 66, 0);
+}
+.vert_container{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+.searchbar{
+    width:100%;
+    font-size: 20px;
+    border: none;
+    border-radius: 100px;  
+    padding: 1rem;
+    background-color: antiquewhite;
+    
+    transition: font-size .25s, background-color .25s, transform .25s;
+
+}
+.searchbutton{
+    border-radius: 100px;  
+    border: none;
+    background-color: antiquewhite;
+}
+.searchbar:focus{
+    
+    outline: none;
+}
+.bookListEntry{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+}
+.cover{
+    display: block;
+    height:auto;
+    width: 300px;
+
+}
+.bookInfo{
+    display: flex;
+    flex-direction:column;
+    height:100%;
+}
+.searchbar:focus{
+    background-color: rgba(255, 255, 255, 0.277);
+    font-size: 25px;
+
+}
+.bookMenu{
+    width: 100%;
+    background-color: white;
+    padding: 1rem;
+    margin-top: .5rem;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.421);
+}
