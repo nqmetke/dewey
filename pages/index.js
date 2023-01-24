@@ -3,8 +3,6 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css';
 import Search from '../components/search.js'
 import Layout from '../components/layout';
-import Account from '../components/Account';
-import { bookSearch } from '../lib/BookGetter.js'
 
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 
@@ -15,7 +13,7 @@ export default function Home() {
   const [emoji, setEmoji] = useState("❤️")
   function randomEmojiPicker(){
     let emojis = ["❤️","👽","☕️","📚"]
-    let index = Math.floor(Math.random() * (3 - 0 + 1) );
+    let index = Math.floor(Math.random() * emoji.length);
     setEmoji(emojis[index]);
   }
 

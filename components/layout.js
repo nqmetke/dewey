@@ -8,7 +8,7 @@ import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 export const siteTitle = "Dewey"
 
 
-export default function Layout({ children, home }){
+export default function Layout({ children, home, login }){
     const session = useSession()
     const supabase = useSupabaseClient()
     return (
@@ -24,13 +24,20 @@ export default function Layout({ children, home }){
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
     
-      <navbar>
-        {!session ? (
-            <Link href="/login">Login</Link>
-        ) : (
-            <Link href="/login">Profile</Link>
+      <div className={styles.navbar}>
+        <div className={styles.left_align}>
+          <Link href="/" className={styles.title}>Dewey</Link>
+        </div>
+        <div class={styles.right_align}>
+        {!session ? 
+            !login ? (
+              <Link className={styles.button} href="/login">Login</Link>
+              ) : null
+         : (
+            <Link className={styles.button} href="/login">Profile</Link>
         )}
-      </navbar>
+        </div>
+      </div>
 
       <main>{children}</main>
       {!home && (

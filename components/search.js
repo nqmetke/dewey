@@ -9,7 +9,6 @@ export default function Search(){
     const [showMenu, setShowMenu] = useState(false);
     const [bookList, setBookList] = useState([]);
     const bookListView = bookList.map((book)=> <div className="bookListEntry">
-        <img  src={JSON.stringify(book.cover["thumbnail"])} />
         <div className="bookInfo">
         <h3>{book.title}</h3> 
         <h5>{book.authors[0]}</h5>
