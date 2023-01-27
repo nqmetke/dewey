@@ -71,7 +71,6 @@ export default function Search(){
                             <h3>{book.title}</h3> 
                             <h5>{book.authors[0]}</h5>
                         </div>
-                        <hr></hr>
                     </div>
                     </a>)
                 
