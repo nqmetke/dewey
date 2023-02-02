@@ -29,7 +29,6 @@ export default function Search(){
     
     async function  bookNavigate(e, book){
         e.preventDefault();
-        //console.log(book);
         await addBook(book);
 
     }
