@@ -28,7 +28,7 @@ export default function Layout({ children, home, login }){
         <div className={styles.left_align}>
           <Link href="/" className={styles.title}>Dewey</Link>
         </div>
-        <div class={styles.right_align}>
+        <div className={styles.right_align}>
         {!session ? 
             !login ? (
               <Link className={styles.button} href="/login">Login</Link>

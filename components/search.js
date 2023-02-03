@@ -9,6 +9,7 @@ export default function Search(){
     const [query, setQuery] = useState("");
     const [showMenu, setShowMenu] = useState(false);
     const [bookList, setBookList] = useState([]);
+    const [bookCoverList, setBookCoverList] = useState([]);
     const bookListView = bookList.map((book)=> <div className="bookListEntry">
         <div className="bookInfo">
         <h3>{book.title}</h3> 
@@ -21,6 +22,7 @@ export default function Search(){
         setQuery(e.target.value);
         if(showMenu) {
             setBookList([]);
+            setBookCoverList([]);
             setShowMenu(false);
         }
 
@@ -40,15 +42,23 @@ export default function Search(){
             
     
           bookSearch(query).then(res => {
-            console.log(res);
             setBookList(res.items.map((item)=>{
+                let isbn13
+
+                
+                console.log(isbn13)
+                console.log({
+                    "title": item.volumeInfo.title,
+                    "authors": item.volumeInfo.authors,
+                    "volumeInfo": item.volumeInfo,
+                })
                 return {
                     "title": item.volumeInfo.title,
                     "authors": item.volumeInfo.authors,
-                    "cover": item.volumeInfo.imageLinks,
-                    "volumeInfo": item.volumeInfo
+                    "volumeInfo": item.volumeInfo,
                 }
             }))
+
           })
         }
       }
@@ -62,17 +72,24 @@ export default function Search(){
                 
             </div>
             {showMenu && (bookListView.length > 0) ? 
-            bookList.map((book)=> 
+            <div className={styles.results}>
+            
+            {bookList.map((book)=> 
                 
                 <a onClick={(e)=>bookNavigate(e, book.volumeInfo)} href="/" className={styles.bookMenu}>
-                    <div className="bookListEntry">
-                        <div className="bookInfo">
-                            <h3>{book.title}</h3> 
-                            <h5>{book.authors[0]}</h5>
+                    <div className={styles.bookListEntry}>
+                        {"imageLinks" in book.volumeInfo ? (
+                                <img src={book.volumeInfo.imageLinks.thumbnail.replace("&edge=curl", "")}></img>
+                        ): null}
+                        <div className={styles.bookInfo}>
+                            <h2>{book.title}</h2> 
+                            <h3>{book.authors[0]}</h3>
                         </div>
                     </div>
-                    </a>)
+                    </a>)}
                 
+             
+             </div>
              : null}
         </div>
     )
